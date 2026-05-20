@@ -606,8 +606,8 @@ class PlistWindow(tk.Toplevel):
         if str(sys.platform) == "darwin":
             self._tree.bind("<ButtonRelease-2>", self.popup) # ButtonRelease-2 on mac
             self._tree.bind("<Control-ButtonRelease-1>", self.popup) # Ctrl+Left Click on mac
-        else:
-            self._tree.bind("<ButtonRelease-3>", self.popup)
+        # As of tkinter 9.0 on macOS button 3 is right click
+        self._tree.bind("<ButtonRelease-3>", self.popup)
 
         # Set bindings
         self._tree.bind("<Double-1>", self.on_double_click)
